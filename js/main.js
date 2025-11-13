@@ -3,8 +3,11 @@ const baseUrl = "http://localhost:5180/api/cars"
 const app = Vue.createApp({
     data() {
         return {
-            intro: 'Welcome to my Vue template',
+            intro: 'Cars Vue App',
             carList:[],
+            carVendor: '',
+            carModel: '',
+            carPrice: 0
 
         }
     },
@@ -31,6 +34,9 @@ const app = Vue.createApp({
 
 
         },
+        gemBil(){
+            console.log("er i gemBil metoden");
+        }
     },
     computed: {
         myComputed() {
