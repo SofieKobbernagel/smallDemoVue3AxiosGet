@@ -63,48 +63,42 @@ const app = Vue.createApp({
         }
     },
     sortVendorAsc() {
-            // alfabetisk på vendor, A til Z
-            this.carList = this.carList.slice().sort((a, b) => {
-                const va = (a.vendor || '').toString();
-                const vb = (b.vendor || '').toString();
-                return va.localeCompare(vb, undefined, { sensitivity: 'base' });
-            });
-        },
+        // alfabetisk på vendor, A til Z
+        this.carList = this.carList.slice().sort((a, b) => {
+            const va = (a.vendor || '').toString();
+            const vb = (b.vendor || '').toString();
+            return va.localeCompare(vb, undefined, { sensitivity: 'base' });
+        });
+    },
 
-        sortVendorDesc() {
-            // Z til A
-            this.carList = this.carList.slice().sort((a, b) => {
-                const va = (a.vendor || '').toString();
-                const vb = (b.vendor || '').toString();
-                return vb.localeCompare(va, undefined, { sensitivity: 'base' });
-            });
-        },
-        sortPriceAsc() {
-            // lav numerisk sortering (lavest til højest)
-            this.carList = this.carList.slice().sort((a, b) => {
-                const pa = Number(a.price) || 0;
-                const pb = Number(b.price) || 0;
-                return pa - pb;
-            });
-        },
+    sortVendorDesc() {
+        // Z til A
+        this.carList = this.carList.slice().sort((a, b) => {
+            const va = (a.vendor || '').toString();
+            const vb = (b.vendor || '').toString();
+            return vb.localeCompare(va, undefined, { sensitivity: 'base' });
+        });
+    },
+    sortPriceAsc() {
+        // lav numerisk sortering (lavest til højest)
+        this.carList = this.carList.slice().sort((a, b) => {
+            const pa = Number(a.price) || 0;
+            const pb = Number(b.price) || 0;
+            return pa - pb;
+        });
+    },
 
-        sortPriceDesc() {
-            // højest til lavest
-            this.carList = this.carList.slice().sort((a, b) => {
-                const pa = Number(a.price) || 0;
-                const pb = Number(b.price) || 0;
-                return pb - pa;
-            });
-        },
+    sortPriceDesc() {
+        // højest til lavest
+        this.carList = this.carList.slice().sort((a, b) => {
+            const pa = Number(a.price) || 0;
+            const pb = Number(b.price) || 0;
+            return pb - pa;
+        });
+    },
 
-        // Reset: genskab carList fra originalCars (masterkopien)
-        resetSort() {
-            this.carList = this.originalCars.slice();
-        },
-    computed: {
-        myComputed() {
-            return ''
-        },
-        
+    // Reset: genskab carList fra originalCars (masterkopien)
+    resetSort() {
+        this.carList = this.originalCars.slice();
     }
 })
