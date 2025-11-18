@@ -7,8 +7,8 @@ const app = Vue.createApp({
             carList:[],
             carVendor: '',
             carModel: '',
-            carPrice: 0
-
+            carPrice: 0,
+            statuskode:'',
         }
     },
     methods: {
@@ -23,11 +23,14 @@ const app = Vue.createApp({
                 response => {
                     console.log(response)
                     this.carList = response.data
+                    this.statuskode = response.status
                 }
+            
             )
             .catch(
                  error => {
                     console.log(error)
+                    this.statuskode = error.response.status
                  } 
             )
 
@@ -36,6 +39,21 @@ const app = Vue.createApp({
         },
         gemBil(){
             console.log("er i gemBil metoden");
+            
+            axios.post(baseUrl, {
+               "vendor": this.carVendor,
+               "model": this.carModel,
+               "price": this.carPrice
+        })
+        .then(
+            response => {
+                console.log(response);
+                console.log(response.data);
+            })
+
+        .catch(error => {
+            console.log(error);
+        })
         }
     },
     computed: {
