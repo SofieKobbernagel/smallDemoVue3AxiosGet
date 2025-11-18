@@ -26,6 +26,15 @@
       
       <button v-on:click="getAllCars">Get Cars</button>
 
+      <!-- Sorteringsknapper -->
+      <div style="margin-top:10px;">
+        <button @click="sortVendorAsc">Vendor A → Z</button>
+        <button @click="sortVendorDesc">Vendor Z → A</button>
+        <button @click="sortPriceAsc">Price Low → High</button>
+        <button @click="sortPriceDesc">Price High → Low</button>
+        <button @click="resetSort">Reset rækkefølge</button>
+      </div>
+
       <ul>
         <li v-for="car in carList">{{car.vendor}} - {{car.model}}</li>
       </ul>
